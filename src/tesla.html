@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('tesla-config', {
+    RED.nodes.registerType('tesla-config-asn', {
         category: 'config',
         defaults: {
             email: {value: "", required: true},
@@ -13,7 +13,7 @@
     });
 </script>
 
-<script type="text/html" data-template-name="tesla-config">
+<script type="text/html" data-template-name="tesla-config-asn">
     <div class="form-tips" style="margin-bottom: 20px;">
         <h3>Getting Started:</h3>
         <p>You need to use a third party solution or application to generate a Tesla refresh token. Check the readme for more information.</p>
@@ -55,11 +55,11 @@
         });
     }
 
-    RED.nodes.registerType('tesla-api', {
+    RED.nodes.registerType('tesla-api-asn', {
         category: 'function',
-        color: '#ff4b50',
+        color: 'linear-gradient(90deg, rgba(255,75,80,1) 0%, rgba(92,8,6,1) 100%)',
         defaults: {
-            teslaConfig: {value: "", type: "tesla-config"},
+            teslaConfig: {value: "", type: "tesla-config-asn"},
             command: {value: "", required: false},
             name: {value: ""},
             vehicleID: {value: "", required: false},
@@ -87,7 +87,7 @@
     });
 </script>
 
-<script type="text/html" data-template-name="tesla-api">
+<script type="text/html" data-template-name="tesla-api-asn">
     <div class="form-row">
         <label for="node-input-teslaConfig" style="white-space: nowrap; width: 125px">
             <i class="icon-tag"></i> Tesla account
@@ -191,7 +191,7 @@
 
 </script>
 
-<script type="text/html" data-help-name="tesla-api">
+<script type="text/html" data-help-name="tesla-api-asn">
     <p>A node that can retrieve data and send commands to the tesla api.</p>
     <h2>Input:</h2>
     <p>The msg.command property can be set to override which command to send. See below for a list of valid

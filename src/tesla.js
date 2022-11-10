@@ -210,7 +210,7 @@ module.exports = function (RED) {
         }
     }
 
-    RED.nodes.registerType("tesla-config", TeslaConfigNode, {
+    RED.nodes.registerType("tesla-config-asn", TeslaConfigNode, {
         credentials: {
             refresh_token: {type: "password"}
         }
@@ -265,7 +265,7 @@ module.exports = function (RED) {
 
     }
 
-    RED.nodes.registerType("tesla-api", TeslaApiNode);
+    RED.nodes.registerType("tesla-api-asn", TeslaApiNode);
 
     RED.httpAdmin.get("/getvehicles/:node_id", RED.auth.needsPermission("flows.write"), async function (req, res) {
 
