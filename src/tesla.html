@@ -57,7 +57,7 @@
 
     RED.nodes.registerType('tesla-api-asn', {
         category: 'function',
-        color: 'linear-gradient(90deg, rgba(255,75,80,1) 0%, rgba(92,8,6,1) 100%)',
+        color: '#cc0000',
         defaults: {
             teslaConfig: {value: "", type: "tesla-config-asn"},
             command: {value: "", required: false},
@@ -66,7 +66,7 @@
             autoWakeUp: {value: true, required: false},
         },
         inputs: 1,
-        outputs: 1,
+        outputs: 2,
         icon: "tesla.png",
         label: function () {
             return this.name ?? "Tesla API";

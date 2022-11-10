@@ -225,9 +225,10 @@ module.exports = function (RED) {
             node.status({fill: "blue", shape: "ring", text: "Idle"});
             node.on('input', async (msg, send, done) => {
 
-                send = send ?? function () {
-                    node.send.apply(node, arguments)
+                send = send ?? function (msg) {
+                    node.send(node, msg)
                 };
+                
                 const vehicleID = msg.vehicleID ?? config.vehicleID;
                 const command = msg.command ?? config.command;
                 const autoWakeUp = msg.autoWakeUp ?? config.autoWakeUp ?? false;
@@ -245,10 +246,11 @@ module.exports = function (RED) {
                         msg.payload = await doCommandAndAutoWake(command, authToken, vehicleID, autoWakeUp, commandArgs);
                     }
 
-                    send(msg);
+                    send([msg,null]);
                     node.status({fill: "green", shape: "ring", text: "Idle"});
                 } catch (err) {
                     node.status({fill: "red", shape: "dot", text: String(err).substring(0, 25)});
+                    send([null,err]);
                     if (done) {
                         // Node-RED 1.0 compatible
                         done(err);
